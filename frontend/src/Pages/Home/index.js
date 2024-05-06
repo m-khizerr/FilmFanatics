@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay} from 'swiper/modules';
@@ -24,7 +24,7 @@ const Home = () => {
     ];
 
      return (
-        <div className='min-h-screen pb-20 overflow-hidden bg-gray-900'>
+        <div className='relative min-h-screen pb-20 overflow-hidden bg-gray-900 '>
             <div className='flex flex-col gap-10'>
                 <div className='w-screen h-auto lg:h-screen'>
                     <Swiper
@@ -45,7 +45,7 @@ const Home = () => {
                         )) :
                             <SwiperSlide>
                                 <div className='relative w-full h-full'>
-                                    <img src={Cover} className='object-cover w-full h-full' />
+                                    <img src={Cover} className='object-cover w-full h-full' alt='Cover'/>
                                     <div className="absolute top-0 left-0 z-40 flex items-center justify-center w-full h-full bg-black bg-opacity-75">
                                         <div className="p-10 text-white lg:p-20">
                                             <h1 className="text-2xl font-extrabold text-red-500 lg:text-4xl sm:text-3xl">FILM FANATICS</h1>
