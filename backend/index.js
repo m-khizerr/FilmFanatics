@@ -15,6 +15,9 @@ app.use(bodyParser.json()); // Parse JSON bodies
 
 dotenv.config(); // Load environment variables from .env file
 
+const userRoutes = require('./Routes/User');
+app.use('/user', userRoutes);
+
 // Define the port to listen on
 const port = process.env.PORT || 3001;
 
