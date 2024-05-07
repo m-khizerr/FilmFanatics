@@ -6,6 +6,7 @@ import Login from './Pages/Login';
 import Signup from './Pages/Signup';
 import Home from './Pages/Home';
 import Movies from './Pages/Movies';
+import Movie from './Pages/Movie';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
       <Route path='/signup' element={<Signup />} />
       <Route path='/home' element={<Home />} />
       <Route path='/movies' element={<Movies />} />
+      <Route path='/movie' element={<Movie />} />
 		</Routes>
     </Router>
     );

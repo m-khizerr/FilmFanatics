@@ -29,7 +29,7 @@ const Modal = ({ showModal, setShowModal, update, setUpdate }) => {
                         <div className="relative flex flex-col w-full max-h-[80vh] shadow-2xl shadow-black bg-gray-900 border-0 rounded-lg outline-none focus:outline-none">
                             <div className="flex items-center justify-between gap-5 p-3 border-b border-solid rounded-t border-blueGray-200">
                                 <h className='text-white text-base font-bold'>Movie Details</h>
-                                <img src="" className='w-5 h-5 transition-all duration-200 cursor-pointer hover:scale-110' onClick={() => setShowModal(false)} />
+                                <img src="" className='w-5 h-5 transition-all duration-200 cursor-pointer hover:scale-110' onClick={() => setShowModal(false)} alt='close'/>
                             </div>
                             <div className='flex flex-row gap-10 px-10'>
                                 <div className='flex flex-col gap-3 font-normal text-white w-fit pt-5 '>
