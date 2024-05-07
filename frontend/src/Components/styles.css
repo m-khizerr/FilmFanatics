@@ -43,11 +43,13 @@
   .swiper-button-next {
     color: red;
     font-weight: bolder;
+    font-size: 25px;
   }
 
   .swiper-button-prev {
     color: red;
     font-weight: bolder;
+    font-size: 25px;
   }
 
   .swiper-button-disabled {

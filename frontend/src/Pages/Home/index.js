@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay} from 'swiper/modules';
+import Modal from '../../Components/AddMovieForm';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -23,24 +24,26 @@ const Home = () => {
         // }
     ];
 
+    const [showModal, setShowModal] = useState(false);
+
      return (
-        <div className='relative min-h-screen pb-20 overflow-hidden bg-gray-900 '>
+        <div className='relative min-h-screen pb-20 overflow-hidden bg-gray-900'>
             <div className='flex flex-col gap-10'>
-                <div className='w-screen h-auto lg:h-screen'>
+                <div className='w-screen h-auto lg:h-screen relative'>
                     <Swiper
                         spaceBetween={30}
                         centeredSlides={true}
                         autoplay={{
-                        delay: 2500,
-                        duration: 2500,
-                        disableOnInteraction: false,
+                            delay: 2500,
+                            duration: 2500,
+                            disableOnInteraction: false,
                         }}
                         modules={[Autoplay]}
                         className="mySwiper"
                     >
                         {movies.length > 0 ? movies.map((movie) => (
-                            <SwiperSlide>
-
+                            <SwiperSlide key={movie.id}>
+                                {/* Your slide content */}
                             </SwiperSlide>
                         )) :
                             <SwiperSlide>
@@ -56,6 +59,9 @@ const Home = () => {
                             </SwiperSlide>
                         }
                     </Swiper>
+                    {/* Absolute positioned button */}
+                    <button onClick={() => setShowModal(true)} className="bottom-5 right-5 fixed bg-red-500 z-50 text-white py-4 px-4 rounded-full">Add</button>
+                    <Modal showModal={showModal} setShowModal={setShowModal} />
                 </div>
                 <div className='w-screen h-[20vh] px-10'>
                     <Carousal />
