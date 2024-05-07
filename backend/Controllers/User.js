@@ -17,7 +17,7 @@ exports.signup = async (req, res) => {
         const newUser = new User({
             name,
             email,
-            password // Note: You should hash the password before saving it to the database
+            password 
         });
 
         // Save the user to the database

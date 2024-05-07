@@ -18,6 +18,9 @@ dotenv.config(); // Load environment variables from .env file
 const userRoutes = require('./Routes/User');
 app.use('/user', userRoutes);
 
+const movieRoutes = require('./Routes/Movie');
+app.use('/movie', movieRoutes);
+
 // Define the port to listen on
 const port = process.env.PORT || 3001;
 

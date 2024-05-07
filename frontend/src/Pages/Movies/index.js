@@ -1,110 +1,30 @@
 import React from 'react';
-import { useState} from "react";
-
+import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import Poster from '../../Resources/unnamed.jpg'
-const movies = [
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    {
-        title: 'Movie',
-        genre: 'Action',
-        poster: Poster
-    },
-    
-]
 
 const Movies = () => {
 
+    const navigate = useNavigate();
+
     const [searchQuery, setSearchQuery] = useState("");
+
+    const [movies, setMovies] = useState([]);
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/movie/getallmovies')
+            setMovies(response.data.movies);
+            console.log(response.data.movies)
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [])
 
     const filteredMovies = movies.filter((movie) => {
         const nameMatch = movie.title.toLowerCase().includes(searchQuery.toLowerCase());
@@ -177,13 +97,13 @@ const Movies = () => {
                                 {/* <img src={Search} className='w-5 h-5' /> */}
                             </div>
                         </div>
-                        <div className='flex flex-col'>
+                        <div className='flex flex-col w-full'>
                             <div className='flex flex-col w-full gap-3 mt-10'>
                                 <div className='grid w-full h-full grid-cols-5 gap-5'>
                                     {
                                         moviesToDisplay.map((movie) => (
-                                            <div className='relative bg-black rounded-2xl'>
-                                                <img src={movie.poster} className='h-[250px]' alt='Movie Poster'/>
+                                            <div onClick={() => navigate(`/movies/${movie._id}`)} className='relative bg-black rounded-2xl'>
+                                                <img src={movie.poster} className='h-[250px] min-w-full' alt='Movie Poster'/>
                                                 <div className='absolute top-0 left-0 flex flex-col justify-between w-full h-full p-5 transition-all duration-300 bg-black bg-opacity-0 opacity-0 cursor-pointer hover:opacity-100 hover:bg-opacity-75'>
                                                     <div className='flex flex-col justify-between gap-1'>
                                                         <h className='text-xl font-bold text-white'>{movie.title}</h>
@@ -211,7 +131,7 @@ const Movies = () => {
                                     <button
                                         key={index}
                                         onClick={() => handlePageChange(pageNumber)}
-                                        className={`mx-2 ${currentPage === pageNumber ? "bg-[#4D7CFE] text-white rounded py-1 px-3" : " text-white rounded- py-1 px-3"
+                                        className={`mx-2 ${currentPage === pageNumber ? "bg-red-500 text-white rounded py-1 px-3" : " text-white rounded- py-1 px-3"
                                             } rounded`}
                                     >
                                         {pageNumber}
