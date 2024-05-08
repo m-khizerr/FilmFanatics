@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
@@ -11,6 +11,10 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
+
+    useEffect(() => {
+        localStorage.clear()
+    },[])
 
     const validateInputs = () => {
         let isValid = true;
@@ -44,11 +48,12 @@ const Login = () => {
             };
     
             try {
-                const response = await axios.post(`http://localhost:3001/user/login`, formData);    
-                console.log('User logged in successfully:', response.data.message);
+                const response = await axios.post(`http://localhost:3001/user/login`, formData);
+                console.log('User logged in successfully:', response.data);
+                localStorage.setItem('user', response.data.user.email);
+                localStorage.setItem('funToken', response.data.token);
                 // Redirect to home page upon successful login
                 navigate('/home');
-
             } catch (error) {
                 console.error('Error occurred during login:', error);
                 // Handle axios error

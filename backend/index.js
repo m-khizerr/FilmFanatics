@@ -21,6 +21,9 @@ app.use('/user', userRoutes);
 const movieRoutes = require('./Routes/Movie');
 app.use('/movie', movieRoutes);
 
+const reviewRoutes = require('./Routes/Review');
+app.use('/review', reviewRoutes);
+
 // Define the port to listen on
 const port = process.env.PORT || 3001;
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import Modal from '../../Components/AddReviewForm';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -73,8 +74,9 @@ const reviews = [
 const Movie = () => {
 
     const { id } = useParams();
-    console.log('Movie to get',id);
+    const token = localStorage.getItem('funToken')
 
+    const [showModal, setShowModal] = useState(false);
     const [movieData, setMovieData] = useState({
         title: '',
         genre: '',
@@ -82,6 +84,7 @@ const Movie = () => {
         trailer: '',
         description: ''
     });
+    const [reviews, setReviews] = useState([]);
     const fetchMovie = async () => {
         try {
             const response = await axios.get(`http://localhost:3001/movie/getmovie/${id}`)
@@ -91,9 +94,19 @@ const Movie = () => {
             console.log(error.message);
         }
     }
+    const fetchReviews = async () => {
+        try {
+            const response = await axios.get(`http://localhost:3001/review/getreviews/${id}`)
+            setReviews(response.data.reviews);
+            console.log(response.data.movie)
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
     useEffect(() => {
         fetchMovie();
+        fetchReviews();
     }, [])
 
     function convertToEmbedUrl(youtubeUrl) {
@@ -118,7 +131,7 @@ const Movie = () => {
                                 alt="poster" className="min-w-[200px] h-[300px] object-cover" />
                         </div>
                         <div className='flex flex-col gap-2'>
-                            <div className="flex flex-row gap-5 py-5 font-bold text-white">
+                            <div className="flex flex-row gap-5 py-1 font-bold text-white">
                                 <div className="flex flex-col gap-2">
                                     <span className='min-w-fit'>Movie Title: </span>
                                     <span className='min-w-fit'>Genre: </span>
@@ -129,7 +142,7 @@ const Movie = () => {
                                 </div>
                             </div>
                             <Rating ratings={4} />
-                            <div className="flex flex-col gap-2 text-white">
+                            <div className="flex flex-col gap-2 text-white mt-1">
                                 <span className='font-bold min-w-fit'>Overview:</span>
                                 <span className='min-w-fit'>{movieData?.description}</span>
                             </div>
@@ -159,7 +172,14 @@ const Movie = () => {
                     </div> */}
                 </div>
             </div>
-            <div className="w-full h-[250px] mt-10">
+            <div className="w-full h-[320px] mt-10 flex flex-col gap-5">
+                <div className='flex flex-row items-center justify-between gap-10 text-white align-middle'>
+                    <h className='text-lg font-bold '>Reviews</h>
+                    <button onClick={() => setShowModal(true)} className={`w-[150px] p-2 font-semibold transition-all duration-300 bg-black rounded hover:bg-gradient-to-t  from-red-500 to-black to-80% ${token ? 'block' : 'hidden'}`}>
+                        Post Review
+                    </button>
+                    <Modal showModal={showModal} setShowModal={setShowModal} movieId={id} />
+                </div>
                 <Swiper
                     slidesPerView={5}
                     spaceBetween={15}
@@ -173,12 +193,12 @@ const Movie = () => {
                     {
                         reviews.map((review) => (
                             <SwiperSlide>
-                                <div className="flex flex-col gap-3 p-7 text-white text-start text-xs bg-gray-950 rounded-[32px] min-h-full cursor-pointer hover:bg-red-500 hover:bg-opacity-5">
+                                <div className="flex flex-col gap-3 min-w-full p-7 text-white text-start text-xs bg-gray-950 rounded-[32px] min-h-full cursor-pointer hover:bg-red-500 hover:bg-opacity-5">
                                     <div className="flex flex-row gap-10 justify-between border-b-[1px] border-white py-2">
-                                        <span className="font-bold">{review.user}</span>
-                                        <Rating ratings={review.rating} />
+                                        <span className="font-bold">{review.user?.name}</span>
+                                        <Rating ratings={review.review?.rating} />
                                     </div>
-                                    <p className='line-clamp-[9] text-[10px]'>{review.content}</p>
+                                    <p className='line-clamp-[9] text-[10px]'>{review.review?.content}</p>
                                 </div>
                             </SwiperSlide>
                         ))
