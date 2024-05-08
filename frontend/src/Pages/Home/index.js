@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay} from 'swiper/modules';
@@ -15,14 +16,33 @@ import Cover from '../../Resources/Movies-Collection.jpg'
 
 const Home = () => {
 
-    const movies = [
-        // {
-        //     name: 'abc'
-        // },
-        // {
-        //     name: 'abc'
-        // }
-    ];
+    const [movies, setMovies] = useState([]);
+    const [sortedMovies, setSortedMovies] = useState([]);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/movie/getallmovies')
+            setMovies(response.data.movies);
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    const sortMovies = () => {
+        const sortedMovies = movies.sort((a, b) => b.reviews.length - a.reviews.length);
+        console.log(movies);
+        return sortedMovies;
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    useEffect(() => {
+        const sortedMovies = sortMovies();
+        setSortedMovies(sortedMovies);
+        console.log(sortedMovies);        
+    }, [movies])
 
     const [showModal, setShowModal] = useState(false);
 
@@ -63,8 +83,9 @@ const Home = () => {
                     <button onClick={() => setShowModal(true)} className="bottom-5 right-5 fixed bg-red-500 z-50 text-white py-4 px-4 rounded-full">Add</button>
                     <Modal showModal={showModal} setShowModal={setShowModal} />
                 </div>
-                <div className='w-screen h-[20vh] px-10'>
-                    <Carousal />
+                <div className='w-screen px-10 flex flex-col gap-5 text-start text-white'>
+                    <h className='text-xl font-bold'>Most Reviews</h>
+                    <Carousal data={movies}/>
                 </div>
             </div>
         </div>

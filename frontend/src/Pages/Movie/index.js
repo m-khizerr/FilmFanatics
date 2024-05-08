@@ -18,59 +18,6 @@ import { FreeMode, Pagination } from 'swiper/modules';
 
 import Rating from '../../Components/Rating';
 
-const reviews = [
-    {
-        user: 'Khizer Tariq',
-        rating: 1,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 2,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 3,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 4,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 5,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 6,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 7,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 8,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 9,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-    {
-        user: 'Khizer Tariq',
-        rating: 10,
-        content: ' I love this movie. It is good. Detective stuff and Fighting stuff .Acting is amazing. Keeps you thinking. Long review: I really do Love this Movie. I saw it on opening night and have no regrets. I will admit it is a bit slow at the beginning but honestly I kind of liked that. It really showed his detective side. He is the world`s greatest detective and that isn`t shown enough in my opinion'
-    },
-]
-
 const Movie = () => {
 
     const { id } = useParams();

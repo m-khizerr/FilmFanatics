@@ -1,4 +1,6 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -11,35 +13,36 @@ import './styles.css';
 // import required modules
 import { Navigation } from 'swiper/modules';
 
-const Carousal = () => {
+const Carousal = ({data}) => {
+    const navigate = useNavigate()
     return (
         <>
             <Swiper 
                 navigation={true} 
                 modules={[Navigation]} 
                 className="mySwiper"
-                slidesPerView={6}
+                slidesPerView={5}
                 spaceBetween={30}
-                slidesPerGroup={6} // Add this line to move multiple slides per navigation click
+                slidesPerGroup={5} // Add this line to move multiple slides per navigation click
             >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
+                {
+                    data.map((movie) => (
+                        <SwiperSlide>
+                            <div onClick={() => navigate(`/movies/${movie._id}`)} className='relative bg-gray-950 rounded-2xl h-[250px] min-w-full'>
+                                <img src={movie.poster} className='h-[250px] min-w-full' alt='Movie Poster'/>
+                                <div className='absolute top-0 left-0 flex flex-col justify-between w-full h-full p-5 transition-all duration-300 bg-black bg-opacity-0 opacity-0 cursor-pointer hover:opacity-100 hover:bg-opacity-75'>
+                                    <div className='flex flex-col justify-start text-start gap-1'>
+                                        <h className='text-base font-bold text-white'>{movie.title}</h>
+                                        <span className='font-semibold text-sm text-white'>{movie.genre}</span>
+                                    </div>
+                                    <div className='flex justify-end w-full'>
+                                        <button className="px-5 text-xs p-2 font-semibold text-white transition-all duration-300 bg-black rounded hover:bg-gradient-to-t  from-red-500 to-black to-80%">See Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))
+                }
             </Swiper>
         </>
     );

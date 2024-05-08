@@ -11,15 +11,6 @@ const Modal = ({ showModal, setShowModal, update, setUpdate, movieId }) => {
         content: '',
     });
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        // Reset error message for the input being changed
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: '',
-        }));
-    };
-
     const validateForm = () => {
         let isValid = true;
         const newErrors = {};
@@ -52,7 +43,7 @@ const Modal = ({ showModal, setShowModal, update, setUpdate, movieId }) => {
                 userEmail: userEmail
             }
             try {
-                const response = await axios.post(`http://localhost:3001/review/addreview`, formData );    
+                await axios.post(`http://localhost:3001/review/addreview`, formData );    
                 console.log('Form submitted:', );
                 setShowModal(false);
             } catch (error) {
