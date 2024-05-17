@@ -55,22 +55,22 @@ const Modal = ({ showModal, setShowModal, update, setUpdate, movieId }) => {
     return (
         <>
             {showModal && (
-                <div className="fixed z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none inset-y-5 inset-2 sm:inset-y-0 sm:inset-0 focus:outline-none">
+                <div className="fixed z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none inset-y-5 inset-2 sm:inset-y-0 sm:inset-0 focus:outline-none max-w-[95vw]">
                     <div className="fixed inset-0 bg-black opacity-50"></div>
-                    <div className="relative w-auto mx-auto my-6">
-                        <div className="relative flex flex-col w-full max-h-[80vh] shadow-2xl shadow-black bg-gray-900 border-0 rounded-lg outline-none focus:outline-none">
+                    <div className="relative w-auto mx-auto my-6 max-w-[95vw]">
+                        <div className="relative flex flex-col w-full max-h-[80vh] shadow-2xl shadow-black bg-gray-900 border-0 rounded-lg outline-none focus:outline-none max-w-[95vw]">
                             <div className="flex items-center justify-between gap-5 p-3 border-b border-solid rounded-t border-blueGray-200">
                                 <h className='text-base font-bold text-white'>Post Review</h>
                                 <img src="" className='w-5 h-5 transition-all duration-200 cursor-pointer hover:scale-110' onClick={() => setShowModal(false)} alt='close'/>
                             </div>
                             <div className='flex flex-row gap-20'>
-                                <div className='flex flex-col gap-3 font-normal text-white pt-5 w-full'>
-                                    <div className='w-full flex flex-row gap-5 justify-between px-10 items-center align-middle'>
+                                <div className='flex flex-col w-full gap-3 pt-5 font-normal text-white'>
+                                    <div className='flex flex-row items-center justify-between w-full gap-5 px-3 align-middle sm:px-10'>
                                         <h className='text-base font-bold'>Review Ratings</h>
                                         <StarRating rating={ratings} setRatings={setRatings} />
                                     </div>
-                                    {errors.rating && <span className="text-sm text-red-500 px-10">{errors.rating}</span>}
-                                    <div className="px-10 mt-3 mb-3 text-white">
+                                    {errors.rating && <span className="px-3 text-sm text-red-500 sm:px-10">{errors.rating}</span>}
+                                    <div className="px-3 mt-3 mb-3 text-white sm:px-10">
                                         <label className="block font-semibold text-left">Review</label>
                                             <textarea 
                                                 name="content" 

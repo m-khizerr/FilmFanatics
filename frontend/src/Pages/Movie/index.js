@@ -69,15 +69,15 @@ const Movie = () => {
     const embedUrl = convertToEmbedUrl(movieData.trailer);
 
     return (
-        <div className="w-screen min-h-screen p-20 mt-10 mb-20 overflow-x-hidden bg-gray-900">
+        <div className="w-screen min-h-screen p-5 pt-20 mt-10 mb-20 overflow-x-hidden bg-gray-900 sm:p-10 lg:p-20">
             <div className="flex flex-col gap-10">
-                <div className="flex flex-row justify-between gap-10">
-                    <div className="flex flex-row gap-10 w-[50%]">
+                <div className="flex flex-col justify-between gap-10 lg:flex-row">
+                    <div className="flex flex-row gap-5 sm:gap-10 lg:w-[50%]">
                         <div className="h-full bg-black rounded w-fit">
                             <img src={movieData?.poster} 
-                                alt="poster" className="min-w-[200px] h-[300px] object-cover" />
+                                alt="poster" className="sm:min-w-[200px] min-w-[150px] h-[200px] sm:h-[300px] object-cover" />
                         </div>
-                        <div className='flex flex-col gap-2'>
+                        <div className='flex flex-col justify-center gap-2 text-sm align-bottom sm:text-base'>
                             <div className="flex flex-row gap-5 py-1 font-bold text-white">
                                 <div className="flex flex-col gap-2">
                                     <span className='min-w-fit'>Movie Title: </span>
@@ -91,32 +91,19 @@ const Movie = () => {
                             <Rating ratings={4} />
                             <div className="flex flex-col gap-2 mt-1 text-white">
                                 <span className='font-bold min-w-fit'>Overview:</span>
-                                <span className='min-w-fit'>{movieData?.description}</span>
+                                <span className='text-xs sm:text-base min-w-fit'>{movieData?.description}</span>
                             </div>
                         </div>
                     </div>
-                    <div className='w-[50%]'>
+                    <div className='lg:w-[50%]'>
                         <iframe
-                            className="w-full h-[300px] rounded"
+                            className="w-full h-full min-h-[300px] md:h-[400px] lg:h-[300px] rounded"
                             src={embedUrl} // Replace VIDEO_ID with the actual ID of the YouTube video
                             title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         ></iframe>
                     </div>
-                    {/* <div className="flex flex-col p-5 border-black border-2 rounded-2xl w-full max-h-[300px] h-full overflow-auto gap-3">
-                        {
-                            reviews.map((review) => (
-                                <div className="flex flex-col gap-1 text-white text-xs border-b-[1px] pb-3 border-black px-2">
-                                    <div className="flex flex-row justify-between gap-10">
-                                        <span className="font-bold">{review.user}</span>
-                                        <span>{review.rating}</span>
-                                    </div>
-                                    <p>{review.content}</p>
-                                </div>
-                            ))
-                        }
-                    </div> */}
                 </div>
             </div>
             <div className="w-full h-[320px] mt-10 flex flex-col gap-5">
@@ -128,8 +115,34 @@ const Movie = () => {
                     <Modal showModal={showModal} setShowModal={setShowModal} movieId={id} />
                 </div>
                 <Swiper
-                    slidesPerView={5}
+                    slidesPerView={2}
                     spaceBetween={15}
+                    breakpoints={{
+                        460: {
+                            slidesPerView: 2,
+                            spaceBetween: 20,
+                          },
+                        600: {
+                          slidesPerView: 2.5,
+                          spaceBetween: 20,
+                        },
+                        768: {
+                          slidesPerView: 3,
+                          spaceBetween: 20,
+                        },
+                        840: {
+                            slidesPerView: 3.5,
+                            spaceBetween: 20,
+                          },
+                        1024: {
+                          slidesPerView: 4,
+                          spaceBetween: 20,
+                        },
+                        1200: {
+                            slidesPerView: 5,
+                            spaceBetween: 20,
+                          },
+                      }}
                     freeMode={true}
                     pagination={{
                     clickable: true,
@@ -140,7 +153,7 @@ const Movie = () => {
                     {
                         reviews.map((review) => (
                             <SwiperSlide>
-                                <div className="flex flex-col gap-3 min-w-full p-7 text-white text-start text-xs bg-gray-950 rounded-[32px] min-h-full cursor-pointer hover:bg-red-500 hover:bg-opacity-5">
+                                <div className="flex flex-col gap-3 min-w-full p-3 sm:p-7 text-white text-start text-xs bg-gray-950 rounded-[32px] min-h-full cursor-pointer hover:bg-red-500 hover:bg-opacity-5">
                                     <div className="flex flex-row gap-10 justify-between border-b-[1px] border-white py-2">
                                         <span className="font-bold">{review.user?.name}</span>
                                         <Rating ratings={review.review?.rating} />

@@ -88,10 +88,10 @@ const Movies = () => {
                     <img src={Poster} className='w-[33.33vw] h-[40vh]' alt='Poster'/>
                     <div className='absolute top-0 left-0 w-full h-[40vh] bg-black bg-opacity-75'></div>
                 </div>
-                <div className='absolute w-screen p-10 top-32'>
-                    <div className={`h-full w-full bg-gray-950 flex flex-col items-center transition-all duration-500 p-10`}>
+                <div className='absolute w-screen p-5 sm:p-10 top-32'>
+                    <div className={`h-full w-full bg-gray-950 flex flex-col items-center transition-all duration-500 p-5 sm:p-10`}>
                         <div className='flex flex-row items-center justify-between w-full gap-10'>
-                            <h className='font-serif text-3xl font-bold text-white'>Movies</h>
+                            <h className='font-serif text-xl font-bold text-white sm:text-3xl'>Movies</h>
                             <div className='flex flex-row p-3 bg-gray-300 rounded-lg'>
                                 <input onChange={handleSearchChange} type='text' className='w-full h-full bg-gray-300 border-none rounded-lg outline-none' placeholder='search...' />
                                 {/* <img src={Search} className='w-5 h-5' /> */}
@@ -99,18 +99,18 @@ const Movies = () => {
                         </div>
                         <div className='flex flex-col w-full'>
                             <div className='flex flex-col w-full gap-3 mt-10'>
-                                <div className='grid w-full h-full grid-cols-5 gap-5'>
+                                <div className='grid w-full h-full grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5'>
                                     {
                                         moviesToDisplay.map((movie) => (
-                                            <div onClick={() => navigate(`/movies/${movie._id}`)} className='relative bg-black rounded-2xl'>
+                                            <div className='relative bg-black rounded-2xl'>
                                                 <img src={movie.poster} className='h-[250px] min-w-full' alt='Movie Poster'/>
-                                                <div className='absolute top-0 left-0 flex flex-col justify-between w-full h-full p-5 transition-all duration-300 bg-black bg-opacity-0 opacity-0 cursor-pointer hover:opacity-100 hover:bg-opacity-75'>
+                                                <div className='absolute top-0 left-0 flex flex-col justify-between w-full h-full p-2 transition-all duration-300 bg-black bg-opacity-75 cursor-pointer lg:bg-opacity-0 lg:opacity-0 hover:opacity-100 hover:bg-opacity-75'>
                                                     <div className='flex flex-col justify-between gap-1'>
-                                                        <h className='text-xl font-bold text-white'>{movie.title}</h>
+                                                        <h className='font-bold text-white '>{movie.title}</h>
                                                         <span className='font-semibold text-white'>{movie.genre}</span>
                                                     </div>
                                                     <div className='flex justify-end w-full'>
-                                                        <button className="px-5 text-xs p-2 font-semibold text-white transition-all duration-300 bg-black rounded hover:bg-gradient-to-t  from-red-500 to-black to-80%">See Details</button>
+                                                        <button onClick={() => navigate(`/movies/${movie._id}`)} className="px-5 text-xs p-2 font-semibold text-white transition-all duration-300 bg-black rounded hover:bg-gradient-to-t  from-red-500 to-black to-80%">See Details</button>
                                                     </div>
                                                 </div>
                                             </div>

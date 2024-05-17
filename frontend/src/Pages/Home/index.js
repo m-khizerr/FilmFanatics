@@ -65,11 +65,11 @@ const Home = () => {
     const [showModal, setShowModal] = useState(false);
 
      return (
-        <div className='relative min-h-screen pb-20 overflow-hidden bg-gray-900'>
+        <div className='relative h-auto min-h-screen pb-20 overflow-hidden bg-gray-900'>
             <div className='flex flex-col gap-10'>
-                <div className="relative w-full h-auto lg:h-screen">
-                    <img src={Cover} className='absolute top-0 left-0 w-screen h-full' alt='cover image'  />
-                    <div className='absolute top-0 left-0 w-screen h-full text-white bg-black bg-opacity-75'>
+                <div className="relative w-full h-full min-h-fit lg:h-screen">
+                    <img src={Cover} className='top-0 left-0 w-screen h-auto lg:absolute lg:h-full' alt='cover image'  />
+                    <div className='top-0 left-0 flex items-center w-screen min-h-full text-white bg-black bg-opacity-75 sm:absolute'>
                     <Swiper
                         spaceBetween={30}
                         centeredSlides={true}
@@ -86,9 +86,9 @@ const Home = () => {
                         >
                         {moviesToDisplay.length > 0 ? moviesToDisplay.map((movie) => (
                             <SwiperSlide key={movie.id} className='swiper-slide'>
-                                <div className='relative flex items-center justify-center w-full h-full mt-20 align-middle bg-transparent'>
-                                    <div className="flex flex-row items-center justify-center lg:w-[70vw] w-full h-fit gap-20 transition-all duration-300 p-5 cursor-pointer rounded-2xl hover:bg-opacity-50 hover:scale-105 hover:bg-black">
-                                        <div className='flex flex-col gap-2 p-5 py-5 text-left text-white'>
+                                <div className='relative flex items-center justify-center w-full h-full align-middle bg-transparent sm:mt-20'>
+                                    <div className="flex flex-row items-center justify-center lg:w-[70vw] w-full h-fit gap-5 sm:gap-20 transition-all duration-300 p-5 cursor-pointer rounded-2xl hover:bg-opacity-50 hover:scale-105 hover:bg-black">
+                                        <div className='flex flex-col gap-2 p-5 py-5 text-sm text-left text-white sm:text-base'>
                                             <div className="flex flex-row gap-5 py-1 font-bold">
                                                 <div className="flex flex-col gap-2">
                                                     <span className='min-w-fit'>{movie?.title}</span>
@@ -98,11 +98,11 @@ const Home = () => {
                                             <Rating ratings={movie.averageRating} />
                                             <div className="flex flex-col gap-2 mt-1">
                                                 <span className='font-bold min-w-fit'>Overview:</span>
-                                                <span className='text-sm min-w-fit'>{movie?.description}</span>
+                                                <span className='text-xs sm:text-sm min-w-fit'>{movie?.description}</span>
                                             </div>
                                         </div>
                                         <div className=''>
-                                            <img src={movie.poster} className='min-w-[200px] max-h-[300px] min-h-[300px]' alt='poster'/>
+                                            <img src={movie.poster} className='min-w-[100px] min-h-[150px] max-h-[150px] sm:min-w-[200px] sm:max-h-[250px] sm:min-h-[250px] md:max-h-[300px] md:min-h-[300px]' alt='poster'/>
                                         </div>
                                     </div>
                                 </div>
@@ -127,12 +127,12 @@ const Home = () => {
                     <Modal showModal={showModal} setShowModal={setShowModal} />
                 </div>
 
-                <div className='flex flex-col w-screen gap-5 px-10 text-white text-start'>
+                <div className='relative flex flex-col w-screen gap-5 px-5 text-white md:px-10 text-start'>
                     <h className='text-xl font-bold'>High Rated</h>
                     <Carousal data={topMovies}/>
                 </div>
 
-                <div className='flex flex-col w-screen gap-5 px-10 text-white text-start'>
+                <div className='flex flex-col w-screen gap-5 px-5 text-white md:px-10 text-start'>
                     <h className='text-xl font-bold'>Most Reviews</h>
                     <Carousal data={movies}/>
                 </div>
