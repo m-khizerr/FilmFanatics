@@ -34,7 +34,8 @@ const Movie = () => {
     const [reviews, setReviews] = useState([]);
     const fetchMovie = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/movie/getmovie/${id}`)
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/movie/getmovie/${id}`);
+            
             setMovieData(response.data.movie);
             console.log(response.data.movie)
         } catch (error) {
@@ -43,7 +44,7 @@ const Movie = () => {
     }
     const fetchReviews = async () => {
         try {
-            const response = await axios.get(`http://localhost:3001/review/getreviews/${id}`)
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/review/getreviews/${id}`);
             setReviews(response.data.reviews);
             console.log(response.data.movie)
         } catch (error) {

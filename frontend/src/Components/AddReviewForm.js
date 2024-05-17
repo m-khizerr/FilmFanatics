@@ -44,7 +44,7 @@ const Modal = ({ showModal, setShowModal, update, setUpdate, movieId }) => {
                 userEmail: userEmail
             }
             try {
-                await axios.post(`http://localhost:3001/review/addreview`, formData );    
+                await axios.post(`${process.env.REACT_APP_BACKEND_URL}/review/addreview`, formData);
                 console.log('Form submitted:', );
                 toast.success('Review Added!')
                 setShowModal(false);

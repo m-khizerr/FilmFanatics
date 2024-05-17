@@ -57,7 +57,7 @@ const Signup = () => {
             };
     
             try {
-                const response = await axios.post(`http://localhost:3001/user/signup`, formData);    
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/signup`, formData);
                 console.log('User registered successfully:', response.data.message);
                 toast.success('SignUp Successful!')
                 navigate('/home');

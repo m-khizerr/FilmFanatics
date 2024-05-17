@@ -24,7 +24,8 @@ const Home = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/movie/getallmovies')
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/movie/getallmovies`);
+            
             setMovies(response.data.movies);
         } catch (error) {
             console.log(error.message);
@@ -33,7 +34,7 @@ const Home = () => {
 
     const fetchTopMovies = async () => {
         try {
-            const response = await axios.get('http://localhost:3001/movie/topmovies')
+            const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/movie/topmovies`);
             console.log(response.data);
             setTopMovies(response.data.movies);
         } catch (error) {

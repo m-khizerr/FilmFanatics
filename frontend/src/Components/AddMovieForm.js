@@ -87,7 +87,7 @@ const Modal = ({ showModal, setShowModal, update, setUpdate }) => {
             if (isImageUrlValid ) {
                 // Image URL is valid, proceed with form submission
                 try {
-                    const response = await axios.post(`http://localhost:3001/movie/addmovie`, formData);    
+                    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/movie/addmovie`, formData);
                     console.log('Form submitted:', formData);
                     toast.success('Movie added successfully!');
                     setShowModal(false);

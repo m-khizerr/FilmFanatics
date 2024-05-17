@@ -49,7 +49,7 @@ const Login = () => {
             };
     
             try {
-                const response = await axios.post(`http://localhost:3001/user/login`, formData);
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/login`, formData);
                 console.log('User logged in successfully:', response.data);
                 localStorage.setItem('user', response.data.user.email);
                 localStorage.setItem('funToken', response.data.token);
