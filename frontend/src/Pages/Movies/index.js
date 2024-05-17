@@ -95,6 +95,7 @@ const Movies = () => {
                             <div className='flex flex-row p-3 bg-gray-300 rounded-lg'>
                                 <input onChange={handleSearchChange} type='text' className='w-full h-full bg-gray-300 border-none rounded-lg outline-none' placeholder='search...' />
                                 {/* <img src={Search} className='w-5 h-5' /> */}
+                                
                             </div>
                         </div>
                         <div className='flex flex-col w-full'>

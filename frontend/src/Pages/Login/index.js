@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 import Poster from '../../Resources/Movies-Collection.jpg';
+import { toast } from "sonner";
 
 const Login = () => {
     const navigate = useNavigate();
@@ -52,10 +53,12 @@ const Login = () => {
                 console.log('User logged in successfully:', response.data);
                 localStorage.setItem('user', response.data.user.email);
                 localStorage.setItem('funToken', response.data.token);
+                toast.success('User Logged in!')
                 // Redirect to home page upon successful login
                 navigate('/home');
             } catch (error) {
                 console.error('Error occurred during login:', error);
+                toast.error("Error in User Login!")
                 // Handle axios error
             }
         }

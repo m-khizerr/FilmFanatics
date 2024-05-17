@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'sonner';
 
 const Modal = ({ showModal, setShowModal, update, setUpdate }) => {
     const [formData, setFormData] = useState({
@@ -88,6 +89,7 @@ const Modal = ({ showModal, setShowModal, update, setUpdate }) => {
                 try {
                     const response = await axios.post(`http://localhost:3001/movie/addmovie`, formData);    
                     console.log('Form submitted:', formData);
+                    toast.success('Movie added successfully!');
                     setShowModal(false);
                 } catch (error) {
                     console.log(error.message);
@@ -95,6 +97,7 @@ const Modal = ({ showModal, setShowModal, update, setUpdate }) => {
             } else {
                 // Invalid image URL
                 console.log('Invalid URL');
+                toast.error('Error in adding the movie!')
             }
         }
     };

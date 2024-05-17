@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 import Poster from '../../Resources/Movies-Collection.jpg'
+import { toast } from "sonner";
 
 const Signup = () => {
 
@@ -58,10 +59,12 @@ const Signup = () => {
             try {
                 const response = await axios.post(`http://localhost:3001/user/signup`, formData);    
                 console.log('User registered successfully:', response.data.message);
+                toast.success('SignUp Successful!')
                 navigate('/home');
 
             } catch (error) {
                 console.error('Error occurred during signup:', error);
+                toast.error('Registration Failed!')
                 // Handle axios error
             }
         }
@@ -80,8 +83,8 @@ const Signup = () => {
                         </div>
                     </div>
                 </div>
-                <div className="flex items-center justify-center w-full mt-20 bg-transparent md:w-2/5 sm:mt-0">
-                    <div className="w-4/5 p-5 text-sm text-white rounded-lg shadow-inner shadow-red-500 md:w-3/5">
+                <div className="flex items-center justify-center w-full mt-20 bg-transparent sm:w-3/5 md:w-2/5 sm:mt-0">
+                <div className="w-3/5 p-5 text-sm text-center text-white rounded-lg shadow-inner shadow-red-500 sm:w-4/5 md:3/5">
                         <div className="w-full text-center">
                             <h2 className="self-center text-xl font-semibold">Sign Up</h2>
                         </div>

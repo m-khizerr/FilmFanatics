@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'sonner';
 
 const Modal = ({ showModal, setShowModal, update, setUpdate, movieId }) => {
 
@@ -45,9 +46,11 @@ const Modal = ({ showModal, setShowModal, update, setUpdate, movieId }) => {
             try {
                 await axios.post(`http://localhost:3001/review/addreview`, formData );    
                 console.log('Form submitted:', );
+                toast.success('Review Added!')
                 setShowModal(false);
             } catch (error) {
                 console.log(error.message);
+                toast('Error in posting the review!')
             }
         } 
     }
