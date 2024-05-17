@@ -44,4 +44,32 @@ exports.getMovie = async (req, res) => {
     }
 };
 
+exports.getTopMovies = async (req, res) => {
+    try {
+        // Fetch all movies with their reviews populated
+        const movies = await Movie.find().populate('reviews').exec();
+
+        console.log("Populated reviews movies: ", movies);
+    
+        // Calculate average rating for each movie
+        const moviesWithRatings = movies.map(movie => {
+          const ratings = movie.reviews.map(review => review.rating);
+          const averageRating = ratings.length ? (ratings.reduce((a, b) => a + b, 0) / ratings.length) : 0;
+          return { ...movie.toObject(), averageRating };
+        });
+
+        console.log('average rating: ', moviesWithRatings);
+    
+        // Sort movies by average rating in descending order
+        moviesWithRatings.sort((a, b) => b.averageRating - a.averageRating);
+    
+        // Get top 20 movies
+        const topMovies = moviesWithRatings.slice(0, 20);
+    
+        res.json({ message: 'Top 20 movies retrieved successfully', movies: topMovies });
+      } catch (error) {
+        res.status(500).json({ message: 'Error retrieving movies', error });
+      }
+}
+
 

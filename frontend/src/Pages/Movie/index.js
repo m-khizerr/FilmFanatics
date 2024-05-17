@@ -69,7 +69,7 @@ const Movie = () => {
     const embedUrl = convertToEmbedUrl(movieData.trailer);
 
     return (
-        <div className="w-screen min-h-screen p-20 mt-10 overflow-x-hidden bg-gray-900">
+        <div className="w-screen min-h-screen p-20 mt-10 mb-20 overflow-x-hidden bg-gray-900">
             <div className="flex flex-col gap-10">
                 <div className="flex flex-row justify-between gap-10">
                     <div className="flex flex-row gap-10 w-[50%]">
@@ -89,7 +89,7 @@ const Movie = () => {
                                 </div>
                             </div>
                             <Rating ratings={4} />
-                            <div className="flex flex-col gap-2 text-white mt-1">
+                            <div className="flex flex-col gap-2 mt-1 text-white">
                                 <span className='font-bold min-w-fit'>Overview:</span>
                                 <span className='min-w-fit'>{movieData?.description}</span>
                             </div>

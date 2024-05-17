@@ -62,7 +62,7 @@ const Login = () => {
     };
 
     return (
-        <div className="w-screen h-screen pt-10 overflow-hidden bg-gray-900">
+        <div className="w-screen h-screen pt-10 mb-20 overflow-hidden bg-gray-900">
             <div className="relative flex flex-col w-full h-full gap-5 sm:gap-0 md:flex-row">
                 <div className="relative w-full md:w-3/5">
                     <img src={Poster} className="w-full h-full" alt="Movie Collection Poster" />

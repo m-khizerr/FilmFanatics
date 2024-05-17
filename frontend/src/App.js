@@ -11,15 +11,15 @@ import Movie from './Pages/Movie';
 function App() {
     return (
     <Router>
-		<Navbar />
-		<Routes>
-      <Route path='/' element={<Home />} />
-			<Route path='/login' element={<Login />} />
-      <Route path='/signup' element={<Signup />} />
-      <Route path='/home' element={<Home />} />
-      <Route path='/movies' element={<Movies />} />
-      <Route path='/movies/:id' element={<Movie />} />
-		</Routes>
+		  <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/home' element={<Home />} />
+        <Route path='/movies' element={<Movies />} />
+        <Route path='/movies/:id' element={<Movie />} />
+      </Routes>
     </Router>
     );
 }

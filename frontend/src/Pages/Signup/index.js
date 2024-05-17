@@ -69,7 +69,7 @@ const Signup = () => {
     
 
     return(
-        <div className="w-screen h-screen pt-10 overflow-hidden bg-gray-900">
+        <div className="w-screen h-screen pt-10 mb-20 overflow-hidden bg-gray-900">
             <div className="relative flex flex-col w-full h-full gap-5 sm:gap-0 md:flex-row">
                 <div className="relative w-full md:w-3/5">
                     <img src={Poster} className="w-full h-full" alt="Movie Collection Poster" />
@@ -83,7 +83,7 @@ const Signup = () => {
                 <div className="flex items-center justify-center w-full bg-transparent md:w-2/5">
                     <div className="w-4/5 p-5 text-sm text-white rounded-lg shadow-inner shadow-red-500 md:w-3/5">
                         <div className="w-full text-center">
-                            <h2 className="text-xl font-semibold self-center">Sign Up</h2>
+                            <h2 className="self-center text-xl font-semibold">Sign Up</h2>
                         </div>
                         <form onSubmit={handleSubmit}>
                             <div className="my-10">

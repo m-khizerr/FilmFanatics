@@ -6,5 +6,6 @@ const movieController = require('../Controllers/Movie');
 router.post('/addmovie', movieController.addMovie);
 router.get('/getallmovies', movieController.getAllMovies)
 router.get('/getmovie/:id', movieController.getMovie)
+router.get('/topmovies', movieController.getTopMovies)
 
 module.exports = router;
