@@ -7,8 +7,8 @@ Make sure to add the .env files in both frontend and backend folders and add the
 # FRONTEND
 REACT_APP_BACKEND_URL=http://localhost:3001
 # BACKEND
-JWT_SECRET = "a5f97b758f1f0ed605ed4f19f79246ab72215bbd7c0148e371ad4c65d8785f99"
-DB = "mongodb+srv://FilmFanatics:film1234@cluster0.dwywoyh.mongodb.net/?retryWrites=true&w=majority&appName=StepSC"
+JWT_SECRET = "YOUR SECRET KEY HERE"
+DB = "YOUR MONGO DB URI HERE"
 
 ### Prerequisites
 
